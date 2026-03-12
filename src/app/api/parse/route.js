@@ -34,7 +34,7 @@ export async function POST(request) {
       return Response.json({ error: "Aucun PDF fourni" }, { status: 400 });
     }
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     const result = await model.generateContent([
       SYSTEM_PROMPT,
       { inlineData: { mimeType: "application/pdf", data: pdfBase64 } },
